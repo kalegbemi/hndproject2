@@ -34,7 +34,7 @@ public class ipAndLocation {
 
     }
 
-    @GetMapping("/api/hello/")
+    @GetMapping("/api/hello")
     public GeneralResponse getGreeting(@RequestParam String visitor_name,
                                        HttpServletRequest httpServlet) {
 
