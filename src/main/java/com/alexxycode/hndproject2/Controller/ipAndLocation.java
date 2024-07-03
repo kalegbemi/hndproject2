@@ -2,7 +2,7 @@ package com.alexxycode.hndproject2.Controller;
 
 import com.alexxycode.hndproject2.Service.IpInfo;
 import com.alexxycode.hndproject2.Service.WeatherReadings;
-import com.alexxycode.hndproject2.model.GenaralResponse;
+import com.alexxycode.hndproject2.model.GeneralResponse;
 import com.alexxycode.hndproject2.model.IpResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class ipAndLocation {
     }
 
     @GetMapping("/api/hello/")
-    public String getGreeting(@RequestParam String visitor_name,
+    public GeneralResponse getGreeting(@RequestParam String visitor_name,
                                        HttpServletRequest httpServlet) {
 
         String ipAddress = getClientIp(httpServlet);
@@ -46,7 +46,7 @@ public class ipAndLocation {
         String temperature = weatherReadings.getTemperature(city);
         String greeting = ("Hello, " + visitor_name + "!, the temperature is " + temperature + " in " + city);
 
-        return new GenaralResponse(ipAddress, city, greeting).toString();
+        return new GeneralResponse(ipAddress, city, greeting);
     }
 
     private static final String[] HEADERS_TO_TRY = {
